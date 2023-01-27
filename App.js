@@ -25,16 +25,16 @@ export default function App() {
       <StatusBar style="auto" />
       <Header appName={name} />
       {/* pass modalVisible as prop to Input.js */}
-      <Input
-        modalIsVisible={modalVisible}
-        sendChangedText={onTextEntered}
-        cancelPressed={onCancel}
-      />
       <Button
         title="Add A Task"
         onPress={() => {
           setModalVisible(true);
         }}
+      />
+      <Input
+        modalIsVisible={modalVisible}
+        sendChangedText={onTextEntered}
+        cancelPressed={onCancel}
       />
       <Text>{enteredText}</Text>
     </View>

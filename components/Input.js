@@ -1,4 +1,11 @@
-import { View, TextInput, Button, Modal, StyleSheet } from "react-native";
+import {
+  View,
+  TextInput,
+  Button,
+  Modal,
+  StyleSheet,
+  Image,
+} from "react-native";
 import { useState } from "react";
 
 // Receive modalVisible in props
@@ -18,6 +25,13 @@ export default function Input({
     // use the received prop in visible prop of Modal
     <Modal visible={modalIsVisible}>
       <View style={styles.container}>
+        <Image
+          source={{
+            uri: "https://cdn-icons-png.flaticon.com/512/2617/2617812.png",
+          }}
+          style={styles.image}
+        />
+        <Image source={require("../assets/logo.png")} style={styles.image} />
         <TextInput
           value={text}
           onChangeText={changeText}
@@ -42,5 +56,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#aaa",
     alignItems: "center",
     justifyContent: "center",
+  },
+  image: {
+    height: 100,
+    weight: 100,
   },
 });
