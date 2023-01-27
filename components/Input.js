@@ -1,29 +1,46 @@
 import { View, TextInput, Button, Modal, StyleSheet } from "react-native";
 import { useState } from "react";
 
-export default function Input({ sendChangedText, modalVisible }) {
-  const [text, setText] = useState("");
-
+// Receive modalVisible in props
+export default function Input({
+  sendChangedText,
+  modalIsVisible,
+  cancelPressed,
+}) {
+  const [text, setText] = useState("default value");
+  function changeText(changedText) {
+    setText(changedText);
+  }
+  // function buttonPressed() {
+  //   sendChangedText(text);
+  // }
   return (
-    <Modal visiable={modalVisible}>
-      <View style={StyleSheet.container}>
+    // use the received prop in visible prop of Modal
+    <Modal visible={modalIsVisible}>
+      <View style={styles.container}>
         <TextInput
           value={text}
-          onChangeText={(changedText) => {
-            setText(changedText);
-            sendChangedText(changedText);
-          }}
-          style={{ backgroundColor: "#eee" }}
+          onChangeText={changeText}
+          style={{ backgroundColor: "red" }}
         />
         <Button
           title="Confirm"
           onPress={() => {
             sendChangedText(text);
             setText("");
-            //setModalVisiable
           }}
         />
+        <Button title="Cancel" onPress={cancelPressed} />
       </View>
     </Modal>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#aaa",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Button, Image } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import Header from "./components/Header";
 import Input from "./components/Input";
 
@@ -13,16 +13,25 @@ export default function App() {
     setEnteredText(changedText);
     setModalVisible(false);
   }
-  //function onCancel(){}
 
+  function onCancel() {
+    setModalVisible(false);
+  }
+  // function onAddTaskPress() {
+  //   setModalVisible(true);
+  // }
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Header appName={name} />
-      <Input modalVisable={modalVisible} sendChangedText={onTextEntered}
-      cancelPressed />
+      {/* pass modalVisible as prop to Input.js */}
+      <Input
+        modalIsVisible={modalVisible}
+        sendChangedText={onTextEntered}
+        cancelPressed={onCancel}
+      />
       <Button
-        title="Add a Task"
+        title="Add A Task"
         onPress={() => {
           setModalVisible(true);
         }}
@@ -38,10 +47,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  },
-  input:{
-    borderBottomColor:"#552055",
-    borderBottomWidth: 2,
-    width: 50%,
   },
 });
