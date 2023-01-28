@@ -14,7 +14,7 @@ export default function Input({
   modalIsVisible,
   cancelPressed,
 }) {
-  const [text, setText] = useState("");
+  const [text, setText] = useState("default value");
   function changeText(changedText) {
     setText(changedText);
   }
@@ -23,7 +23,7 @@ export default function Input({
   // }
   return (
     // use the received prop in visible prop of Modal
-    <Modal visible={modalIsVisible} animationType="slide">
+    <Modal visible={modalIsVisible}>
       <View style={styles.container}>
         <Image
           source={{
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 100,
-    weight: 100,
+    width: 100,
   },
   input: {
     borderBottomColor: "rebeccapurple",
