@@ -8,7 +8,7 @@ export default function App() {
   const name = "my awesome app";
   const [enteredText, setEnteredText] = useState();
   const [modalVisible, setModalVisible] = useState(false);
-
+  //onConfirm function
   function onTextEntered(changedText) {
     setEnteredText(changedText);
     setModalVisible(false);
@@ -47,5 +47,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  text: {
+    color: "#4510ff",
+    fontSize: 180,
   },
 });
