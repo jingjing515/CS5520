@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, SafeAreaView, View } from "react-native";
 import Header from "./components/Header";
 import Input from "./components/Input";
 
 export default function App() {
   const name = "my awesome app";
-  const [enteredText, setEnteredText] = useState();
+  const [enteredText, setEnteredText] = useState("Your goals appear here");
   const [modalVisible, setModalVisible] = useState(false);
   //onConfirm function
   function onTextEntered(changedText) {
@@ -21,23 +21,29 @@ export default function App() {
   //   setModalVisible(true);
   // }
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-      <Header appName={name} />
-      {/* pass modalVisible as prop to Input.js */}
-      <Button
-        title="Add A Task"
-        onPress={() => {
-          setModalVisible(true);
-        }}
-      />
+
+      <View style={styles.topContainer}>
+        <Header appName={name} />
+        {/* pass modalVisible as prop to Input.js */}
+        <Button
+          title="Add A Task"
+          onPress={() => {
+            setModalVisible(true);
+          }}
+        />
+      </View>
+
       <Input
         modalIsVisible={modalVisible}
         sendChangedText={onTextEntered}
         cancelPressed={onCancel}
       />
-      <Text>{enteredText}</Text>
-    </View>
+      <View style={styles.bottomContainer}>
+        <Text style={styles.text}>{enteredText}</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -50,6 +56,15 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#4510ff",
-    fontSize: 180,
+    fontSize: 18,
+  },
+  topContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bottomContainer: {
+    flex: 1,
+    backgroundColor: "#dcd",
   },
 });
