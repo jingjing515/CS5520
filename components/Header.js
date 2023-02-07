@@ -12,9 +12,9 @@ export default function Header({ appName }) {
 const styles = StyleSheet.create({
   header: {
     color: "purple",
-    borderColor: "rebeccapurple",
     borderWidth: 2,
+    borderColor: "rebeccapurple",
+    fontSize: 24,
     padding: 5,
-    fontSize: 20,
   },
 });

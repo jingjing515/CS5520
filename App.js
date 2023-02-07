@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { Button, StyleSheet, Text, SafeAreaView, View } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  View,
+  FlatList,
+} from "react-native";
 import Header from "./components/Header";
 import Input from "./components/Input";
 
@@ -20,6 +27,8 @@ export default function App() {
   // function onAddTaskPress() {
   //   setModalVisible(true);
   // }
+  // function onDeletePressed(){
+  // }
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
@@ -34,7 +43,6 @@ export default function App() {
           }}
         />
       </View>
-
       <Input
         modalIsVisible={modalVisible}
         sendChangedText={onTextEntered}
@@ -42,6 +50,9 @@ export default function App() {
       />
       <View style={styles.bottomContainer}>
         <Text style={styles.text}>{enteredText}</Text>
+        <FlatList>
+          contentContainerStyle={styles.contentContainerStyle}
+        </FlatList>
       </View>
     </SafeAreaView>
   );
@@ -51,20 +62,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "center",
-  },
-  text: {
-    color: "#4510ff",
-    fontSize: 18,
   },
   topContainer: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
   },
   bottomContainer: {
-    flex: 1,
+    flex: 4,
     backgroundColor: "#dcd",
+    alignItems: "center",
+
+    // alignSelf: "stretch",
+  },
+  text: {
+    fontSize: 18,
+    color: "purple",
+
+    padding: 5,
+  },
+  textContainer: {
+    backgroundColor: "#999",
+    borderRadius: 5,
   },
 });
